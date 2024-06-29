@@ -1,4 +1,4 @@
-import Anime from "@/views/Anime";
+import {Anime} from "@/views/Anime";
 
 
 

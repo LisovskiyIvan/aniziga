@@ -20,7 +20,7 @@ export default function Navbar() {
         <div className="w-[100%] h-[10%] flex justify-between items-center pt-10 text-lg px-2 text-black">
             <Link href={'/'}><Image src='/az.png' width={44} height={44} alt="icon"></Image></Link>
             {routes.map((value, index) => <Link href={value.path} key={index}>{value.name}</Link>)}
-            <button className="btn btn-sm btn-outline text-black"><span className={wsans.className}>Войти</span></button>
+            <button className="btn btn-sm btn-outline text-black"><span>Войти</span></button>
         </div>
     )
 }

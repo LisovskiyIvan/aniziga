@@ -14,10 +14,10 @@ export default function AnimeList() {
         ></Image>
         <div className="flex flex-col ml-4">
           <h2 className=" text-3xl">
-            <span className={advent.className}>Название</span>
+            <span >Название</span>
           </h2>
           <h3 className="text-2xl">
-            <span className={advent.className}>Название меньше</span>
+            <span >Название меньше</span>
           </h3>
           <div className="text-lg">
             <span>ТВ сериал </span>/ <span>2024</span>/ <span>7.8</span>
@@ -33,10 +33,10 @@ export default function AnimeList() {
         ></Image>
         <div className="flex flex-col ml-4">
           <h2 className=" text-3xl">
-            <span className={advent.className}>Привет</span>
+            <span >Привет</span>
           </h2>
           <h3 className="text-2xl">
-            <span className={advent.className}>Название меньше</span>
+            <span >Название меньше</span>
           </h3>
           <div className="text-lg">
             <span>ТВ сериал </span>/ <span>2024</span>/ <span>7.8</span>
@@ -52,10 +52,10 @@ export default function AnimeList() {
         ></Image>
         <div className="flex flex-col ml-4">
           <h2 className=" text-3xl">
-            <span className={advent.className}>Привет</span>
+            <span >Привет</span>
           </h2>
           <h3 className="text-2xl">
-            <span className={advent.className}>Название меньше</span>
+            <span >Название меньше</span>
           </h3>
           <div className="text-lg">
             <span>ТВ сериал </span>/ <span>2024</span>/ <span>7.8</span>
