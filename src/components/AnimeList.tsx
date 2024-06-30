@@ -1,10 +1,11 @@
-import { advent } from "@/app/layout";
+
 import Image from "next/image";
+import Divider from '@mui/material/Divider';
 
 export default function AnimeList() {
   return (
-    <div className="bg-white w-[95%] rounded-md py-[5%] px-[3%] text-black">
-      <div className="flex  mb-8">
+    <div className="bg-white w-[95%] rounded-md py-[5%] px-[3%] text-black mb-[25px]">
+      <div className="flex  my-4">
         <Image
           src="/img1.jpg"
           alt="anime image"
@@ -23,8 +24,10 @@ export default function AnimeList() {
             <span>ТВ сериал </span>/ <span>2024</span>/ <span>7.8</span>
           </div>
         </div>
+        
       </div>
-      <div className="flex  mb-8">
+      <Divider />
+      <div className="flex  my-4">
         <Image
           src="/img1.jpg"
           alt="anime image"
@@ -43,7 +46,8 @@ export default function AnimeList() {
           </div>
         </div>
       </div>
-      <div className="flex  mb-8">
+      <Divider />
+      <div className="flex  my-4">
         <Image
           src="/img1.jpg"
           alt="anime image"
