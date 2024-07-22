@@ -17,10 +17,10 @@ export default function Navbar() {
       ]
       // Добавить ховер для ссылок
     return (
-        <div className="w-[100%] h-[10%] flex justify-between items-center pt-10 text-lg px-2 text-black">
-            <Link href={'/'}><Image src='/az.png' width={44} height={44} alt="icon"></Image></Link>
+        <div className="w-[100%] h-[10%] flex justify-between md:justify-evenly items-center pt-10 text-lg md:text-3xl px-2 text-black">
+            <Link href={'/'}><Image src='/az.png' width={44} height={44} alt="icon" className="md:w-[80px] md:h-[80px]"></Image></Link>
             {routes.map((value, index) => <Link href={value.path} key={index}>{value.name}</Link>)}
-            <button className="btn btn-sm btn-outline text-black"><span>Войти</span></button>
+            <button className="btn btn-sm md:btn-md btn-outline md:text-2xl text-black"><span>Войти</span></button>
         </div>
     )
 }

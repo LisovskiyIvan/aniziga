@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export const AnimeCard = () => {
   return (
-      <div className="pt-[50px] flex flex-col items-center">
+      <div className="pt-[50px] flex flex-col items-center text-2xl">
           <Image
             src="/img1.jpg"
             alt="anime image"
@@ -11,8 +11,17 @@ export const AnimeCard = () => {
             priority={true}
             className="rounded-md h-auto"
           ></Image>
-        <div className="mt-[5%] text-2xl">Рейтинг: 7/10</div>
-
+        <div className="my-[5%] text-2xl">Рейтинг: 7/10</div>
+        <h1 className="text-3xl mb-2">Название</h1>
+        <h2 className="  my-2">Названия другие</h2>
+        <div className="my-1">Эпизодов: </div>
+        <div className="my-1">Впервые вышло:</div>
+        <div className="my-1">Статус</div>
+        <div className="my-1 text-center">Впервые вышло: <span>йцу </span></div>
+        <div className="my-1 ">Продолжительность: </div>
+        <div className="my-1">Возростной рейтинг: </div>
+        <div className="my-1 text-center mb-[25px] px-3">Описание: <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime sit non ullam repudiandae sapiente exercitationem modi eaque laboriosam eos eveniet quaerat, alias magni quidem tempora nobis optio fuga eius ea.</p></div>
+        
         {/* <div className="main">
           <div className="score">
             <img src="/star.png" alt="" className="w-6 self-baseline mr-2" />7
