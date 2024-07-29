@@ -8,7 +8,7 @@ export default function Signup() {
         
         <div className="min-h-[100dvh] bg-dblue w-[100%] text-xl flex flex-col items-center">
         <Navbar /> 
-            <SignupForm />
+        <SignupForm />
         </div>
         </>
     )

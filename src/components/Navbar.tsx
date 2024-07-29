@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from 'next/image'
-import { wsans } from "@/app/layout"
 
 
 export default function Navbar() {

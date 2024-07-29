@@ -14,8 +14,8 @@ export default function SignupForm() {
   
 
     return (
-        <form onSubmit={handleSubmit} className="flex justify-center items-center">
-        <div className="w-[90%] flex min-h-[400px] mt-[200px] bg-white rounded-lg justify-center items-center text-3xl flex-col">
+        <form onSubmit={handleSubmit} className="flex justify-center min-mt-[50px] mt-[25%] sm:mt-[15%] lg:mt-[10%] items-center mb-[50px] w-[90%] sm:w-[65%] lg:w-[50%] xl:w-[40%]">
+        <div className="w-[100%] flex min-h-[400px] bg-white rounded-lg justify-center items-center text-3xl flex-col">
             <h1>Aniziga</h1>
     
       <div className="w-[85%] my-6">

@@ -66,11 +66,8 @@ export const Filters = () => {
   };
 
   return (
-    <div className="flex flex-col w-[90%] bg-white rounded-md m-[10%]">
+    <div className="flex flex-col w-[90%] bg-white rounded-md m-[10%] ">
       <h1 className="p-4 text-2xl text-black">Фильтры</h1>
-      {/* <SelectComponent changeFunc={setGenre} value={filtersStore.getGenre()} arr={genres} title='Жанры'/>
-            <SelectComponent changeFunc={setType} value={filtersStore.getType()} arr={types} title='Вид'/>
-            <SelectComponent changeFunc={setStatus} value={filtersStore.getStatus()} arr={status} title='Статус'/> */}
       <FormControl sx={{ m: 1, minWidth: 80 }}>
         <InputLabel id="demo-simple-select-autowidth-label">Жанры</InputLabel>
         <Select
@@ -123,7 +120,7 @@ export const Filters = () => {
           {statuses.map((value) => <MenuItem value={value.code} key={value.name}>{value.name}</MenuItem>)}
         </Select>
       </FormControl> 
-      <Button variant="contained" className="w-20 self-center my-4 bg-siren">Искать</Button>
+      <Button variant="contained" className="w-20 self-center mb-4 bg-siren">Искать</Button>
     </div>
   );
 };
