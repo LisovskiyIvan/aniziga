@@ -1,26 +1,47 @@
+'use client'
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { AnimeCardDTO } from "@/DTO/AnimeDTO"
 
-export const AnimeCard = () => {
+async function fetchAnime(id: string) {
+  const res = await fetch(`http://localhost:8081/anime/${id}`).then(res => res.json())
+  return res
+}
+
+export const AnimeCard = ({animeId}: {animeId: string}) => {
+
+  const [anime, setAnime] = useState<AnimeCardDTO>()
+
+  useEffect( ()=> {
+
+    async function getData() {
+      const res = await fetchAnime(animeId.replace('%7D', ''))
+      setAnime(res)
+    }
+    getData()
+  }, [])
+
+
   return (
       <div className="pt-[50px] flex flex-col items-center text-2xl">
           <Image
-            src="/img1.jpg"
+            src={anime ? anime.large_image_url: ''}
             alt="anime image"
             width={250}
             height={400}
             priority={true}
             className="rounded-md h-auto"
           ></Image>
-        <div className="my-[5%] text-2xl">Рейтинг: 7/10</div>
-        <h1 className="text-3xl mb-2">Название</h1>
-        <h2 className="  my-2">Названия другие</h2>
-        <div className="my-1">Эпизодов: </div>
-        <div className="my-1">Впервые вышло:</div>
-        <div className="my-1">Статус</div>
-        <div className="my-1 text-center">Впервые вышло: <span>йцу </span></div>
-        <div className="my-1 ">Продолжительность: </div>
-        <div className="my-1">Возростной рейтинг: </div>
-        <div className="my-1 text-center mb-[25px] px-3">Описание: <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime sit non ullam repudiandae sapiente exercitationem modi eaque laboriosam eos eveniet quaerat, alias magni quidem tempora nobis optio fuga eius ea.</p></div>
+        <div className="my-[5%] text-2xl text-center">Рейтинг: {anime?.score}</div>
+        <h1 className="text-3xl mb-2 text-center">{anime?.title}</h1>
+        <h2 className="px-2  my-1 text-center">{anime?.title_english}</h2>
+        <h2 className="px-2  my-1 text-center">{anime?.title_japanese}</h2>
+        <div className="my-1 text-center">Эпизодов: {anime?.episodes}</div>
+        <div className="my-1 text-center">Впервые вышло: {anime?.aired_from}</div>
+        <div className="my-1 text-center">Статус: {anime?.status}</div>
+        <div className="my-1 text-center">Продолжительность: {anime?.duration}</div>
+        <div className="my-1 text-center">Возростной рейтинг: {anime?.rating}</div>
+        <div className="my-1 text-center mb-[25px] px-6 ">Описание: <p className="text-lg">{anime?.synopsis}</p></div>
         
         {/* <div className="main">
           <div className="score">

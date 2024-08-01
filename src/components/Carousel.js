@@ -1,7 +1,7 @@
 'use client'
 
 import * as THREE from 'three'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Canvas, useFrame,} from '@react-three/fiber'
 import { Image, ScrollControls, } from '@react-three/drei'
 import { easing } from 'maath'
@@ -11,17 +11,31 @@ import { useRouter } from 'next/navigation'
 
 
 
+async function fetchAnime() {
+  const res = await fetch('http://localhost:8081/anime?filters=upcoming&type=TV&limit=8').then(res => res.json())
+  return res
+}
+
 
 export default function Carousel  ()  {
   
+  const [anime, setAnime] = useState()
 
+  useEffect( ()=> {
+
+    async function getData() {
+      const res = await fetchAnime()
+      setAnime(res)
+    }
+    getData()
+  }, [])
 
   return(
   
   <Canvas camera={{ position: [0, 0, 100], fov: 14 }}>
     <ScrollControls pages={4} infinite>
       <Rig rotation={[0, 0, 0.15]}>
-        <Crs />
+        <Crs anime={anime}/>
       </Rig>
     </ScrollControls>
   </Canvas>
@@ -41,21 +55,23 @@ function Rig(props) {
   return <group ref={ref} {...props} />
 }
 
-function Crs({ radius = 1.4, count = 8 }) {
+function Crs({ radius = 1.4, count = 8, anime }) {
   
   
   return Array.from({ length: count }, (_, i) => (
     <Card
       key={i}
+      animeid={anime?.data[i].id}
       // url={`/img${Math.floor(i % 10) + 1}_.jpg`}
-      url={`/img1.jpg`}
+      url={anime ? anime.data[i].large_image_url : `/img1.jpg`}
       position={[Math.sin((i / count) * Math.PI * 2) * radius, 0, Math.cos((i / count) * Math.PI * 2) * radius]}
       rotation={[0, Math.PI + (i / count) * Math.PI * 2, 0]}
     />
   ))
 }
 
-function Card({ url, ...props }) {
+function Card({ url,animeid, ...props }) {
+  
   const router = useRouter()
   const ref = useRef()
   const [hovered, hover] = useState(false)
@@ -68,7 +84,7 @@ function Card({ url, ...props }) {
   })
   return (
   
-    <Image  onClick={()=> router.push('/')} ref={ref} url={url} transparent side={THREE.DoubleSide} onPointerOver={pointerOver} onPointerOut={pointerOut} {...props}>
+    <Image  onClick={()=> router.push(`/anime/${animeid}}`)} ref={ref} url={url} transparent side={THREE.DoubleSide} onPointerOver={pointerOver} onPointerOut={pointerOut} {...props}>
       <bentPlaneGeometry args={[0.1, 1, 1, 20, 20]} />
     </Image>
   )
