@@ -6,7 +6,6 @@ import { filtersStore } from "@/stores/FiltersStore";
 
 import { Button, FormControl, InputLabel, MenuItem } from "@mui/material";
 
-
 export const Filters = () => {
   const genres = [
     { name: "Спорт", code: "Sports" },
@@ -88,7 +87,7 @@ export const Filters = () => {
           ))}
         </Select>
       </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 80 }}>
+      <FormControl sx={{ m: 1, minWidth: 80 }}>
         <InputLabel id="demo-simple-select-autowidth-label">Тип</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
@@ -101,7 +100,11 @@ export const Filters = () => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {types.map((value) => <MenuItem value={value.code} key={value.name}>{value.name}</MenuItem>)}
+          {types.map((value) => (
+            <MenuItem value={value.code} key={value.name}>
+              {value.name}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
       <FormControl sx={{ m: 1, minWidth: 80 }}>
@@ -117,10 +120,16 @@ export const Filters = () => {
           <MenuItem value="">
             <em>None</em>
           </MenuItem>
-          {statuses.map((value) => <MenuItem value={value.code} key={value.name}>{value.name}</MenuItem>)}
+          {statuses.map((value) => (
+            <MenuItem value={value.code} key={value.name}>
+              {value.name}
+            </MenuItem>
+          ))}
         </Select>
-      </FormControl> 
-      <Button variant="contained" className="w-20 self-center mb-4 bg-siren">Искать</Button>
+      </FormControl>
+      <Button variant="contained" className="w-20 self-center mb-4 bg-siren">
+        Искать
+      </Button>
     </div>
   );
 };

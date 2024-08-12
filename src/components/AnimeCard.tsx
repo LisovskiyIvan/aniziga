@@ -1,49 +1,57 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { AnimeCardDTO } from "@/DTO/AnimeDTO"
+import { AnimeCardDTO } from "@/DTO/AnimeDTO";
 
 async function fetchAnime(id: string) {
-  const res = await fetch(`http://localhost:8081/anime/${id}`).then(res => res.json())
-  return res
+  const res = await fetch(`http://localhost:8081/anime/${id}`).then((res) =>
+    res.json()
+  );
+  return res;
 }
 
-export const AnimeCard = ({animeId}: {animeId: string}) => {
+export const AnimeCard = ({ animeId }: { animeId: string }) => {
+  const [anime, setAnime] = useState<AnimeCardDTO>();
 
-  const [anime, setAnime] = useState<AnimeCardDTO>()
-
-  useEffect( ()=> {
-
+  useEffect(() => {
     async function getData() {
-      const res = await fetchAnime(animeId.replace('%7D', ''))
-      setAnime(res)
+      const res = await fetchAnime(animeId.replace("%7D", ""));
+      setAnime(res);
     }
-    getData()
-  }, [])
-
+    getData();
+  }, []);
 
   return (
-      <div className="pt-[50px] flex flex-col items-center text-2xl">
-          <Image
-            src={anime ? anime.large_image_url: ''}
-            alt="anime image"
-            width={250}
-            height={400}
-            priority={true}
-            className="rounded-md h-auto"
-          ></Image>
-        <div className="my-[5%] text-2xl text-center">Рейтинг: {anime?.score}</div>
+    <div className="pt-[50px]  text-2xl flex flex-col items-center">
+      <Image
+        src={anime ? anime.large_image_url : ""}
+        alt="anime image"
+        width={250}
+        height={400}
+        priority={true}
+        className="rounded-md h-auto m-5"
+      ></Image>
+      <div className="flex flex-col items-center w-[97%] bg-white rounded-lg py-5 px-2 mb-[20px]">
+        <div className="my-2 text-2xl text-center">Рейтинг: {anime?.score}</div>
         <h1 className="text-3xl mb-2 text-center">{anime?.title}</h1>
         <h2 className="px-2  my-1 text-center">{anime?.title_english}</h2>
         <h2 className="px-2  my-1 text-center">{anime?.title_japanese}</h2>
         <div className="my-1 text-center">Эпизодов: {anime?.episodes}</div>
-        <div className="my-1 text-center">Впервые вышло: {anime?.aired_from}</div>
+        <div className="my-1 text-center">
+          Впервые вышло: {anime?.aired_from}
+        </div>
         <div className="my-1 text-center">Статус: {anime?.status}</div>
-        <div className="my-1 text-center">Продолжительность: {anime?.duration}</div>
-        <div className="my-1 text-center">Возростной рейтинг: {anime?.rating}</div>
-        <div className="my-1 text-center mb-[25px] px-6 ">Описание: <p className="text-lg">{anime?.synopsis}</p></div>
-        
-        {/* <div className="main">
+        <div className="my-1 text-center">
+          Продолжительность: {anime?.duration}
+        </div>
+        <div className="my-1 text-center">
+          Возростной рейтинг: {anime?.rating}
+        </div>
+        <div className="my-1 text-center mb-[25px] px-6 ">
+          Описание: <p className="text-lg">{anime?.synopsis}</p>
+        </div>
+      </div>
+      {/* <div className="main">
           <div className="score">
             <img src="/star.png" alt="" className="w-6 self-baseline mr-2" />7
             <div className="ten">/10</div>
@@ -90,7 +98,7 @@ export const AnimeCard = ({animeId}: {animeId: string}) => {
               </div>
             </div>
           </div> */}
-        {/* </div> */}
+      {/* </div> */}
       {/* <div className="p-12" v-if="(anime.trailer != undefined)">
                 <iframe :src="anime.trailer.embed_url + '&mute=1'" frameborder="0" width="1000" height="600"></iframe>
         </div>
