@@ -10,7 +10,7 @@ async function fetchAnime(id: string) {
   return res;
 }
 
-export const AnimeCard = ({ animeId }: { animeId: string }) => {
+export const  AnimeCard = ({ animeId }: { animeId: string }) => {
   const [anime, setAnime] = useState<AnimeCardDTO>();
 
   useEffect(() => {
@@ -50,6 +50,7 @@ export const AnimeCard = ({ animeId }: { animeId: string }) => {
         <div className="my-1 text-center mb-[25px] px-6 ">
           Описание: <p className="text-lg">{anime?.synopsis}</p>
         </div>
+        {/* <iframe src={`https://vidsrc.xyz/embed/tv?imdb=tt0944947`} frameBorder="0"></iframe> */}
       </div>
       {/* <div className="main">
           <div className="score">
