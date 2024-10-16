@@ -40,17 +40,17 @@ export default function AnimeList(props: Props) {
   }, []);
 
   return (
-    <div className="bg-white w-[95%] rounded-md py-[5%] px-[3%] text-black mb-[25px]">
-      {anime?.data.map((v, index) => {
+    <div className="bg-white w-[95%] rounded-md py-[5%] px-[3%] text-black mb-[25px]" key={1}>
+      {anime?.data.map((v) => {
         return (
-          <>
-            <div key={index} className="flex  my-4">
+          <div key={v.id}>
+            <div className="flex  my-4">
               <Image
                 src={v.large_image_url}
                 alt={v.title}
                 width={150}
-                height={220}
-                className="rounded-md"
+                height={250}
+                className="rounded-md "
               ></Image>
 
               <div className="flex flex-col ml-4">
@@ -69,7 +69,7 @@ export default function AnimeList(props: Props) {
               </div>
             </div>
             <Divider />
-          </>
+          </div>
         );
       })}
     </div>

@@ -23,9 +23,7 @@ export default function SignupForm() {
         "patronymic": '',
         "email": email
       })
-    }).then(res => res.json())
-    
-    
+    }).then(res => res.json())    
     // Здесь должна быть логика валидации и отправки данных
   };
 
